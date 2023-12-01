@@ -92,7 +92,7 @@ Bad pratice: Error 404
 
 10-) Help and documentation
 <div>
-  <img src="https://blog.solutionservices.com.br/wp-content/uploads/2018/11/225433-x-boas-praticas-para-uma-gestao-de-documentos-eficiente.jpg" height="200" width="400">
+  <img src="https://php.com.br/admin/app/images/posts/50-documentation-718x640.jpg" height="200" width="400">
 </div>
 
 Good pratice: one good documentation.
