@@ -4,9 +4,9 @@ import com.bertoti.firstproject.crud.model.Car;
 import com.bertoti.firstproject.crud.model.DateCar;
 import com.bertoti.firstproject.crud.model.UpdateCar;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/car")
@@ -15,7 +15,7 @@ public class CarController {
 
     private List<Car> cars = new ArrayList<>();
 
-    private static Integer id = 1;
+    private static Integer id = 0 ;
 
 
     @GetMapping
@@ -43,6 +43,15 @@ public class CarController {
             }
         }
 
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        for(Car value: cars){
+            if(value.getId() == id){
+                cars.remove(value);
+            }
+        }
     }
 
 }
