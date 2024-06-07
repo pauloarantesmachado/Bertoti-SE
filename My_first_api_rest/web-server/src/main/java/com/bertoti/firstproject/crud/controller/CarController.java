@@ -5,22 +5,27 @@ import com.bertoti.firstproject.crud.model.DateCar;
 import com.bertoti.firstproject.crud.model.UpdateCar;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
 @RequestMapping("/car")
+@CrossOrigin(origins = "http://127.0.0.1:5501") 
 public class CarController {
 
-
-    private List<Car> cars = new ArrayList<>();
+    private Map<Integer, Car> cars = new Hashtable<>();
 
     private static Integer id = 0 ;
 
-
     @GetMapping
     public List<Car> CarListCar(){
-        return this.cars;
+        List<Car> carList = new ArrayList<>();
+        for(Car value : cars.values()) {
+            carList.add(value);
+        }
+        return carList;
     }
 
     @PostMapping
@@ -28,30 +33,22 @@ public class CarController {
         this.id++;
         var model = new Car(car);
         model.setId(this.id);
-        cars.add(model);
+        cars.put(id, model);
 
     }
 
     @PutMapping
     public void updateCar(@RequestBody UpdateCar car){
         var carUpdate = new Car(car);
-        for (Car value:  cars){
-            if(value.getId() == car.id()){
-                value.setName(car.name());
-                value.setColor(car.color());
-                value.setYear(car.year());
-            }
-        }
-
+        var carForUpdate = cars.get(car.id());
+        carForUpdate.setName(carUpdate.getName());
+        carForUpdate.setYear(carUpdate.getYear());
+        carForUpdate.setColor(carUpdate.getColor());
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id){
-        for(Car value: cars){
-            if(value.getId() == id){
-                cars.remove(value);
-            }
-        }
+        cars.remove(id);
     }
 
 }

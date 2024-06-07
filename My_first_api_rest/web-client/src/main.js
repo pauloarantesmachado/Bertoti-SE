@@ -1,12 +1,61 @@
-let data = [
-    {id: 1, name: "Camaro", year: 2016, color:"black"},
-    {id: 2, name: "Mustang", year: 2017, color:"red"},
-    {id: 3, name: "Charger", year: 2018, color:"red"},
-    {id: 4, name: "Charger", year: 2018, color:"blue"},
-]
+
+async function getAll() {
+    let response = await fetch(`http://localhost:8080/car`);
+    let userData = await response.json();
+    console.log(userData);
+    return userData
+}
+
+async function postCar(obj) {
+    try {
+        let response = await fetch('http://localhost:8080/car', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        });
+        let result = await response.json();
+        readAll();
+    } catch (error) {
+        console.error('Error adding car:', error);
+    }
+}
+
+async function updateCar(obj) {
+    try {
+        let response = await fetch(`http://localhost:8080/car`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        });
+        readAll();
+    } catch (error) {
+        console.error('Error updating car:', error);
+    }
+}
+
+async function deleteCar(id) {
+    try {
+        let response = await fetch(`http://localhost:8080/car/${id}`, {
+            method: 'DELETE'
+        });
+        if (response.ok) {
+            readAll();
+        } else {
+            console.error('Error deleting car:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error deleting car:', error);
+    }
+}
 
 
-function readAll(){
+
+async function readAll(){
+    data =  await getAll();
     var table = document.querySelector(".data_table");
     var elements = "";
     data.map(record =>{
@@ -29,19 +78,17 @@ function create(){
     document.querySelector(".create_form").style.display = "block";
     document.querySelector(".add_div").style.display = "none";
 }
-function add(){
+async function add(){
     var name = document.querySelector(".name").value;
     var year = document.querySelector(".year").value;
     var color = document.querySelector(".color").value;
     obj = {
-        id: data.length+1,
         name: name,
-        year: year,
+        year: Number(year),
         color: color,
     }
-    console.log("Oi",obj);
-    data.push({id: data.length+1, name: name, year: year, color: color});
     
+    add = await postCar(obj);
     document.querySelector(".create_form").style.display = "none";
     document.querySelector(".add_div").style.display = "block";
 
@@ -57,7 +104,7 @@ function edit(id){
     document.querySelector(".uid").value = obj.id;
 }
 
-function update(){
+async function update(){
     var id = document.querySelector(".uid").value;
     var name = document.querySelector(".uname").value;
     var year = document.querySelector(".uyear").value;
@@ -68,14 +115,12 @@ function update(){
         year: year,
         color: color,
     }
-    console.log(objeUpdate)
-    var index = data.findIndex(rec => rec.id === id);
-    data[index] = objeUpdate
+    update = await updateCar(objeUpdate);
     document.querySelector(".update_form").style.display = "none";
     readAll();
 }
 
-function deleteRecord(id){
-    data = data.filter(rec => rec.id !== id);
+async function deleteRecord(id){
+    data = await deleteCar(id);
     readAll();
 }
