@@ -2,7 +2,6 @@
 async function getAll() {
     let response = await fetch(`http://localhost:8080/car`);
     let userData = await response.json();
-    console.log(userData);
     return userData
 }
 
@@ -15,7 +14,6 @@ async function postCar(obj) {
             },
             body: JSON.stringify(obj)
         });
-        let result = await response.json();
         readAll();
     } catch (error) {
         console.error('Error adding car:', error);
@@ -42,11 +40,7 @@ async function deleteCar(id) {
         let response = await fetch(`http://localhost:8080/car/${id}`, {
             method: 'DELETE'
         });
-        if (response.ok) {
-            readAll();
-        } else {
-            console.error('Error deleting car:', response.statusText);
-        }
+        readAll();
     } catch (error) {
         console.error('Error deleting car:', error);
     }

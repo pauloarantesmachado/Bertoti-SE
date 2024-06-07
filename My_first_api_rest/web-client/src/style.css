@@ -1,15 +1,16 @@
+body{
+    background-color: #1A2130;
+}
 .container{
     display: flex;
     justify-content: center;
-    height: 100Vh;
-    background-color: #FDFFE2;
+    height: 80Vh;
 }
-
 .form_container{
-    margin-top: 10px;
+    margin-top: 30px;
     width: 60vh;
     height: 80vh;
-    background-color: #524C42;
+    background-color: #5A72A0;
     border-radius: 10px;
     padding: 10px;
     display: flex;
@@ -19,6 +20,7 @@
 
 form input{
     padding: 10px;
+    margin-top: 10px;
     border-radius: 8px;
     border: 1px soli #FDFFE2;
 }
