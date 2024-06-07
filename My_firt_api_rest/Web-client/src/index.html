@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crud operation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="readAll()">
+    <div class="container">
+        <div class="form_container">
+            <form class="create_form">
+                <input type="text" class="name" placeholder="Car name"/>
+                <input type="text" class="year" placeholder="Year car"/>
+                <input type="text" class="color" placeholder="Color car"/>
+                <button type="button" onclick="add()">Create</button>
+            </form>
+            <form class="update_form">
+                <input type="text" hidden class="uid"/>
+                <input type="text" class="uname"/>
+                <input type="text" class="uyear"/>
+                <input type="text" class="ucolor"/>
+                <button type="button" onclick="update()">Update</button>
+            </form>
+            <div class="add_div">
+                <button onclick="create()">Add +</button>
+            </div>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Color</th>
+                </thead>
+                <tbody class="data_table"></tbody>
+            </table>
+        </div>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
