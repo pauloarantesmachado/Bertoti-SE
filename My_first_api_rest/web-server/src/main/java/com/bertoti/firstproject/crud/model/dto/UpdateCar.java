@@ -1,4 +1,4 @@
-package com.bertoti.firstproject.crud.model;
+package com.bertoti.firstproject.crud.model.dto;
 
 public record UpdateCar(
         Integer id,

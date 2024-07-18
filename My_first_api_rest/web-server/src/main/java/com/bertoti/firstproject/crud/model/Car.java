@@ -1,5 +1,8 @@
 package com.bertoti.firstproject.crud.model;
 
+import com.bertoti.firstproject.crud.model.dto.DateCar;
+import com.bertoti.firstproject.crud.model.dto.UpdateCar;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +12,17 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name="car")
 public class Car {
 
+    @Id
+    @GeneratedValue( strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
 
+    @Column(name = "create_year")
     private Integer year;
 
     private String color;
