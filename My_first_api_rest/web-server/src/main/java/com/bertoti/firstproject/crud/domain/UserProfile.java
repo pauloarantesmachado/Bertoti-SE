@@ -23,6 +23,10 @@ public class UserProfile implements UserDetails {
     private Long userId;
     private String email;
     private String password;
+    private String cpf;
+    private String phoneNumber;
+
+    public UserProfile(String email, String password, String cpf, String phoneNumber) {}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
