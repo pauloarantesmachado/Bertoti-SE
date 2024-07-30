@@ -50,6 +50,7 @@ class TokenServiceTest {
                 .withIssuer("API Bertoti")
                 .build()
                 .verify(token));
+
     }
 
     private UserProfile createUser(DataCreateUserDTO data){
