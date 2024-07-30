@@ -1,4 +1,4 @@
-name: Run tests on Java 8
+name: Run tests on Java 17
 
 on: [pull_request, push]
 
