@@ -30,3 +30,4 @@ HardSkill
 SoftSkil
 - Comunicação Assertiva
 - Trabalho em equipe
+- Metologia agil
