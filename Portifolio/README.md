@@ -31,3 +31,6 @@ SoftSkil
 - Comunicação Assertiva
 - Trabalho em equipe
 - Metologia agil
+
+##Contribuições Pessoais
+- Add token in endpoint 
